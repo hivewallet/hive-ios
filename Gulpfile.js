@@ -9,7 +9,8 @@ var glob = require('glob')
 var refresh = require('gulp-livereload')
 var lrserver = require('tiny-lr')()
 var buildServer = require('./server/express')
-var sketch = require('gulp-sketch')
+var sketch = require('gulp-sketch');
+var replace = require('gulp-replace');
 var clean = require('gulp-clean')
 
 // server --------------------------------- //
@@ -30,30 +31,44 @@ gulp.task('styles', function(){
     .pipe(sass())
     .pipe(prefix())
     .pipe(gulp.dest('./build/assets/css/'))
+    .pipe(gulp.dest('./cordova/www/assets/css/'))
     .pipe(refresh(lrserver));
 });
 
 gulp.task('scripts', function(){
+  gulp.src('./app/ios.js')
+    .pipe(gulp.dest('./cordova/www/assets/js/'));
+
   var bundler = browserify('./app/application.js')
   bundle(bundler, './application.js')
     .pipe(gulp.dest('./build/assets/js/'))
+    .pipe(gulp.dest('./cordova/www/assets/js/'))
     .pipe(refresh(lrserver));
 });
 
 gulp.task('loader', function(){
   var bundler = browserify('./app/loader/nope.js')
   bundle(bundler, './nope.js')
-    .pipe(gulp.dest('./build/assets/js/'));
+    .pipe(gulp.dest('./build/assets/js/'))
+    .pipe(gulp.dest('./cordova/www/assets/js/'));
 
   var bundler = browserify('./app/loader/index.js')
   bundle(bundler, './loader.js')
     .pipe(gulp.dest('./build/assets/js/'))
+    .pipe(gulp.dest('./cordova/www/assets/js/'))
     .pipe(refresh(lrserver));
 });
 
 gulp.task('html', function(){
+  var injectScripts = ['cordova.js', 'assets/js/ios.js'];
+  var injectTags = injectScripts.map(function(src) {
+    return '  <script src="'+src+'"></script>'
+  }).concat('</head>').join('\n');
+
   gulp.src('./app/index.html')
     .pipe(gulp.dest('./build/'))
+    .pipe(replace('</head>', injectTags))
+    .pipe(gulp.dest('./cordova/www/'))
     .pipe(refresh(lrserver));
 });
 
@@ -65,6 +80,7 @@ gulp.task('clean-assets', function(){
 gulp.task('assets', ['clean-assets'], function(){
   gulp.src('./app/assets/**/*')
     .pipe(gulp.dest('./build/assets/'))
+    .pipe(gulp.dest('./cordova/www/assets/'))
     .pipe(refresh(lrserver));
 });
 
@@ -106,7 +122,7 @@ gulp.task('watch', function() {
 
 });
 
-// $ gulp sketch  ------------------------- //
+// $ gulp sketch -------------------------- //
 
 gulp.task('sketch', function() {
   gulp.src('./app/assets-master.sketch')
@@ -115,6 +131,37 @@ gulp.task('sketch', function() {
     }))
     .pipe(gulp.dest('./app/assets/img/'));
 });
+
+gulp.task('cordova-icons', function() {
+  gulp.src('./cordova/assets-cordova.sketch')
+    .pipe(sketch({
+      export: 'artboards',
+      items: [
+        'icon-40',
+        'icon-50',
+        'icon-60',
+        'icon-72',
+        'icon-76',
+        'icon-small',
+        'icon'
+        ]
+    }))
+    .pipe(gulp.dest('./cordova/platforms/ios/Hive/Resources/icons/'));
+});
+
+gulp.task('cordova-splash', function() {
+  gulp.src('./cordova/assets-cordova.sketch')
+    .pipe(sketch({
+      export: 'artboards',
+      items: [
+        'Default',
+        'Default-Landscape',
+        'Default-Portrait',
+        'Default-568h@2x~iphone'
+        ]
+    }))
+    .pipe(gulp.dest('./cordova/platforms/ios/Hive/Resources/splash/'));
+})
 
 // $ gulp build --------------------------- //
 

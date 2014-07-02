@@ -53,6 +53,17 @@ Click on the bottom link "fix this" to create an admin user, say:
 
 This project has js & css live reload setup. If you wish to use it to boost your productivity, head over to chrome store and download [the LiveReload extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei). After turning it on, you'd never need to hit the refresh button anymore.
 
+## iOS Development
+
+Hive can also be packaged as an iOS app using Apache Cordova. To run locally, make sure you've got XCode installed. Everything is contained within the `./cordova` directory. To run the app inside the iOS Simulator;
+
+`npm install -g cordova`
+`gulp build`
+`cd ./cordova`
+`cordova run ios --emulator` (or `--device`)
+
+Obviously we can't start a server or CouchDB within the iOS app, so it instead makes requests to the Heroku endpoint.
+
 ## Contributing
 
 ### Instructions

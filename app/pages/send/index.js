@@ -21,7 +21,8 @@ module.exports = function(el){
     template: require('./index.ract').template,
     data: {
       currencies: currencies,
-      exchangeRates: {}
+      exchangeRates: {},
+      isCordova: window.hasOwnProperty('cordova')
     }
   })
 
@@ -33,6 +34,19 @@ module.exports = function(el){
 
   emitter.on('prefill-wallet', function(address) {
     ractive.set('to', address)
+  })
+
+  ractive.on('open-qr', function(){
+    var failHandler = function (error) {
+      alert(error);
+    }
+
+    var successHandler = function (result) {
+      var walletAddress = result.text.replace('bitcoin:', '')
+      ractive.set('to', walletAddress)
+    }
+
+    cordova.plugins.barcodeScanner.scan(successHandler, failHandler)
   })
 
   ractive.on('open-geo', function(){
