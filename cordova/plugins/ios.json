@@ -39,6 +39,10 @@
                         {
                             "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Clipboard\"><param name=\"ios-package\" value=\"CDVClipboard\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": []
@@ -104,6 +108,9 @@
             "PACKAGE_NAME": "com.hivewallet.app"
         },
         "org.apache.cordova.geolocation": {
+            "PACKAGE_NAME": "com.hivewallet.app"
+        },
+        "com.verso.cordova.clipboard": {
             "PACKAGE_NAME": "com.hivewallet.app"
         }
     },

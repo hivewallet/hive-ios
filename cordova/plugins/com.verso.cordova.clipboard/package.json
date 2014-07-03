@@ -1,0 +1,18 @@
+{
+    "version": "0.1.0",
+    "name": "com.verso.cordova.clipboard",
+    "cordova_name": "Clipboard",
+    "description": "Clipboard management plugin for Cordova/PhoneGap",
+    "license": "MIT",
+    "keywords": [
+        "clipboard",
+        "copy",
+        "paste"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ]
+}

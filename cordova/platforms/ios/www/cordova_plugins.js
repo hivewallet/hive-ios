@@ -69,6 +69,13 @@ module.exports = [
         "clobbers": [
             "navigator.geolocation"
         ]
+    },
+    {
+        "file": "plugins/com.verso.cordova.clipboard/www/clipboard.js",
+        "id": "com.verso.cordova.clipboard.Clipboard",
+        "clobbers": [
+            "cordova.plugins.clipboard"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -79,7 +86,8 @@ module.exports.metadata =
     "org.apache.cordova.device": "0.2.10",
     "org.apache.cordova.splashscreen": "0.3.1",
     "org.apache.cordova.console": "0.2.10-dev",
-    "org.apache.cordova.geolocation": "0.3.9-dev"
+    "org.apache.cordova.geolocation": "0.3.9-dev",
+    "com.verso.cordova.clipboard": "0.1.0"
 }
 // BOTTOM OF METADATA
 });
