@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>AFBE3981-9C0B-464A-BD2A-AC2D6E4B1DB0</string>
+	<string>0209AF59-37E0-4694-B16A-340C651E2287</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Hive</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>54DC0693-1E89-485D-91FF-0E3D9C1E5161</key>
-		<string>ssh://github.com/hivewallet/hive-js.git</string>
+		<key>ACD5E25C-5EF2-4F13-8AAB-FC04CF046793</key>
+		<string>ssh://github.com/hivewallet/hive-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>cordova/platforms/ios/Hive.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>54DC0693-1E89-485D-91FF-0E3D9C1E5161</key>
+		<key>ACD5E25C-5EF2-4F13-8AAB-FC04CF046793</key>
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/hivewallet/hive-js.git</string>
+	<string>ssh://github.com/hivewallet/hive-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>54DC0693-1E89-485D-91FF-0E3D9C1E5161</string>
+	<string>ACD5E25C-5EF2-4F13-8AAB-FC04CF046793</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>54DC0693-1E89-485D-91FF-0E3D9C1E5161</string>
+			<string>ACD5E25C-5EF2-4F13-8AAB-FC04CF046793</string>
 			<key>IDESourceControlWCCName</key>
-			<string>hive-js</string>
+			<string>hive-ios</string>
 		</dict>
 	</array>
 </dict>

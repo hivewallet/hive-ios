@@ -6,7 +6,7 @@
     <content src="index.html" />
     <access origin="*" />
 
-    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
 
     <preference name="DisallowOverscroll" value="true"/>
