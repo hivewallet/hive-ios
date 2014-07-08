@@ -74,8 +74,8 @@
   "aperture": {
     "sources": [
       "app/lib/*",
-      "app/pages/**/*",
-      "app/widgets/**/*"
+      "app/pages/*",
+      "app/widgets/*"
     ]
   },
   "engines": {
