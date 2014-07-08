@@ -52,23 +52,6 @@ module.exports = function init(el) {
     })
   })
 
-  ractive.on('help', function() {
-    showTooltip({
-      message: 'Gravatar (globally recognised avatar) is a service that lets you re-use the same avatar across websites and apps by specifying an email address.',
-      link: {
-        text: 'Create a gravatar',
-        url: 'https://en.gravatar.com/'
-      }
-    })
-  })
-
-  ractive.on('toggle', function(event){
-    event.original.preventDefault();
-    var arrow = event.node.lastChild.childNodes[0]
-    var target = event.node.dataset.target
-    toggleDropdown(target, arrow);
-  })
-
   ractive.on('edit-details', function(){
     if(ractive.get('animating')) return;
     Profile.hide($previewEl, ractive, function(){
@@ -132,21 +115,6 @@ module.exports = function init(el) {
     avatarEl.style.setProperty('background-image', "url('" + avatar + "')")
   }
 
-  ractive.on('switch-token', function(event) {
-
-    var token = event.node.id
-
-    if(token === getNetwork()) return;
-
-    var host = window.location.host
-    var url = window.hasOwnProperty('cordova') ? 'index.html' : '/'
-
-    if(token !== 'bitcoin') url += '?network=' + token
-
-    window.location.assign(url);
-  })
-
-  function handleUserError(response) {
   function handleUserError() {
     var data = {
       title: "Uh Oh!",
