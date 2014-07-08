@@ -50,3 +50,17 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+#header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2000;
+}
+
+#tabs {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 2000;
+}

@@ -2,7 +2,14 @@
 
 #history {
   padding-left: 20px;
+  max-height: 540px;
   padding-right: 20px;
+  padding-top: 120px;
+  overflow-y: scroll;
+
+&:-webkit-scrollbar {
+  display: none;
+}
 
   .green {
     color: $green;

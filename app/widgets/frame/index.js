@@ -43,7 +43,7 @@ module.exports = function(el){
 
   // menu toggle
   emitter.on('toggle-menu', function(open) {
-    var classes = ractive.find("#main").classList
+    var classes = ractive.find("#main, #header").classList
     if(open) {
       ractive.set('sidebar_open', true)
       classes.add('closed')
