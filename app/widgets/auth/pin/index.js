@@ -17,11 +17,31 @@ module.exports = function(prevPage, data){
       footer: require('./footer.ract').template
     },
     data: {
-      userExists: userExists
+      userExists: userExists,
+      boxes: [false, false, false, false]
     }
   })
 
-  ractive.on('enter-pin', function(event){
+  ractive.on('focus-pin', function(){
+    ractive.set('pinfocused', true)
+  })
+
+  ractive.on('blur-pin', function(){
+    ractive.set('pinfocused', false)
+  })
+
+  ractive.observe('pin', function(){
+    var dots = ractive.nodes['setPin'].value.length
+    var boxes = ractive.get('boxes')
+
+    boxes.forEach(function(_, i){
+      boxes[i] = i < dots
+    })
+
+    ractive.set('boxes', boxes)
+  })
+
+  ractive.on('enter-pin', function(){
     if(!validatePin(getPin())){
       emitter.emit('clear-pin')
       return showError({ message: 'Pin must be a 4-digit number' })
@@ -47,8 +67,8 @@ module.exports = function(prevPage, data){
     ractive.set('pin', '')
   })
 
-  ractive.on('clear-credentials', function(event){
-    Hive.reset(function(err){
+  ractive.on('clear-credentials', function(){
+    Hive.reset(function(){
       location.reload(false);
     })
   })
