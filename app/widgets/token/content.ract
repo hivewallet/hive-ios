@@ -8,6 +8,9 @@
         {{#litecoin}}
           {{>svg_token_litecoin}}
         {{/litecoin}}
+        {{#testnet}}
+          {{>svg_token_testnet}}
+        {{/testnet}}
       </span>
       <h3 class="_title">{{capitalize(token)}}</h3>
     </div>

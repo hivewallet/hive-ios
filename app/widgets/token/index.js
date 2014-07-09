@@ -22,6 +22,10 @@ module.exports = function init(el) {
         {
           token: 'litecoin',
           litecoin: true
+        },
+        {
+          token: 'testnet',
+          testnet: true
         }
       ],
       capitalize: function(str){

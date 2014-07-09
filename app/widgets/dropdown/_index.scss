@@ -172,8 +172,8 @@
 
 .tokens {
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
-  padding-top: 20px;
 }
 
 .token__item {
@@ -181,12 +181,14 @@
   width: 45%;
   text-align: center;
   opacity: 0.8;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   ._icon {
     margin-bottom: 10px;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 85px;
+    height: 85px;
     display: inline-block;
 
     &.i-bitcoin-token {
@@ -194,6 +196,9 @@
     }
     &.i-litecoin-token {
       background-color: #C4C4C4;
+    }
+    &.i-testnet-token {
+      background-color: #00FF00;
     }
   }
   ._title {
