@@ -12,6 +12,11 @@
           {{>svg_email}}
         </span>
       </a>
+      <a class="_btn" on-click="copy">
+        <span class="_icon">
+          {{>svg_email}}
+        </span>
+      </a>
     </div>
   </div>
 </div>

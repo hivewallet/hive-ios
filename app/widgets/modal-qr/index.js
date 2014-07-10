@@ -23,6 +23,11 @@ module.exports = function showTooltip(data){
     ractive.fire('cancel')
   })
 
+  ractive.on('copy', function(){
+    cordova.plugins.clipboard.copy(ractive.get('address'));
+    alert('Copied to clipboard');
+  })
+
   return ractive
 }
 
