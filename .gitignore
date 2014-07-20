@@ -8,3 +8,4 @@ cordova/www/
 cordova/platforms/ios/www/
 cordova/platforms/ios/cordova/console.log
 cordova/platforms/ios/Hive.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcuserdatad
