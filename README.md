@@ -87,6 +87,22 @@ Go to [iTunes Connect](https://itunesconnect.apple.com), log in as the team admi
 
 Build the app for release as above. Create an archive, and then use "Distribute" -> "Submit to the iOS App Store".
 
+## Android Development
+
+Apache Cordova is also set up to create an Android app. This requires the Android SDK and the following steps:
+
+```
+npm install -g cordova
+gulp build
+cd ./cordova
+android update project -p platforms/android/ --subprojects
+ant -f platforms/android/CordovaLib/xwalk_core_library/build.xml debug
+cordova build android
+cordova run android     # or: cordova emulate android
+```
+
+The Android part of Cordova makes use of [Crosswalk](https://crosswalk-project.org/) to bundle a modern web runtime. It includes runtimes for both x86 and ARM (see cordova/platforms/android/CordovaLib/xwalk_core_library/libs/ ). It should be possible to build tailored APKs which only contain one of the two to save on package size.
+
 ## Contributing
 
 ### Instructions
