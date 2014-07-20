@@ -84,3 +84,8 @@ Obviously we can't start a server or CouchDB within the iOS app, so it instead m
     # just client
     npm run test-client
 
+### Testing deployment inside Vagrant
+
+1. [Install Vagrant](http://www.vagrantup.com/downloads.html)
+2. symlink the playbook file into place: `ln -s path/to/ansible/repo provisioners`
+3. `vagrant up` or `vagrant reload --provision`

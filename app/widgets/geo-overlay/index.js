@@ -9,16 +9,15 @@ var fadeIn = require('hive-transitions/fade.js').fadeIn
 var fadeOut = require('hive-transitions/fade.js').fadeOut
 var animatePin = require('hive-transitions/pinDrop.js').drop
 var resetPin = require('hive-transitions/pinDrop.js').reset
+var spinner = require('hive-transitions/spinner.js')
 
 module.exports = function(el){
-  var nearbys = []
-  var xhr_timeout;
   var ractive = new Ractive({
     el: el,
     template: require('./index.ract').template,
     data: {
       exchangeRates: {},
-      nearbys: nearbys,
+      nearbys: [],
       searching: true,
       getAvatar: getAvatar
     }
@@ -41,18 +40,6 @@ module.exports = function(el){
     ractive.fire('close-geo')
   })
 
-  ractive.on('search-again',function(event) {
-    event.original.preventDefault()
-    ractive.set('searching', true)
-    ractive.fire('search-nearby')
-  })
-
-  ractive.on('refresh-list', function(event) {
-    event.original.preventDefault()
-    ractive.set('updating_nearbys', true)
-    lookupGeo(undefined)
-  })
-
   ractive.on('search-nearby', function(){
     var pinEl = ractive.nodes['geo-pin']
     var pulseEl = ractive.nodes['geo-pulse']
@@ -60,6 +47,11 @@ module.exports = function(el){
       animatePin(pinEl, pulseEl)
     })
     lookupGeo('new')
+  })
+
+  ractive.on('search-again', function() {
+    spinner.spin(ractive.nodes.refresh_el)
+    lookupGeo()
   })
 
   ractive.on('close-geo', function(){
@@ -70,11 +62,9 @@ module.exports = function(el){
       }
       ractive.set('nearbys', [])
       ractive.set('searching', false)
-      ractive.set('results', false)
       emitter.emit('close-overlay')
       geo.remove()
     })
-
   })
 
   window.onbeforeunload = function() {
@@ -84,6 +74,7 @@ module.exports = function(el){
   function lookupGeo(context) {
     geo.search(function(err, results){
       if(err) {
+        spinner.stop(ractive.nodes.refresh_el)
         return showError({
           message: err.message,
           onDismiss: function(){
@@ -94,31 +85,30 @@ module.exports = function(el){
 
       if(context === 'new') {
         // set a brief timeout so it "feels" like we're searching
-        xhr_timeout = setTimeout(function(){
-          if(results.length >= 1){
-            ractive.set('results', true)
-            setNearbys(results)
-          }
+        setTimeout(function(){
+          setNearbys(results)
           var pinEl = ractive.nodes['geo-pin']
           resetPin(pinEl)
           ractive.set('searching', false)
         }, 1500)
       } else {
-        if(results.length >= 1){
-          setNearbys(results)
-        } else {
-          ractive.set('nearbys', [])
-          ractive.set('results', false)
-        }
-        ractive.set('updating_nearbys', false)
+        setNearbys(results)
+        spinner.stop(ractive.nodes.refresh_el)
       }
     })
   }
 
   function setNearbys(results) {
-    nearbys = results.map(function(record){
-      return record[0]
-    })
+    var nearbys
+
+    if(results == null || results.length < 1) {
+      nearbys = []
+    } else {
+      nearbys = results.map(function(record){
+        return record[0]
+      })
+    }
+
     ractive.set('nearbys', nearbys)
   }
 

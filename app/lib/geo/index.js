@@ -4,6 +4,8 @@ var xhr = require('hive-xhr')
 var db = require('hive-db')
 var getWallet = require('hive-wallet').getWallet
 var uriRoot = require('hive-origin')()
+var getNetwork = require('hive-network')
+var uriRoot = window.location.origin
 var userInfo = {}
 
 function fetchUserInfo(callback){
@@ -15,6 +17,7 @@ function fetchUserInfo(callback){
     userInfo.email = doc.userInfo.email
     userInfo.avatarIndex = doc.userInfo.avatarIndex
     userInfo.address = getWallet().currentAddress
+    userInfo.network = getNetwork()
 
     callback()
   })

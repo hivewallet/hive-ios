@@ -4,13 +4,12 @@
   <div class="sidebar__logo">
     {{>svg_logo}}
   </div>
-  <span class="sidebar__version">v0.1.4</span>
+  <span class="sidebar__version">v0.1.9</span>
 
 </div>
 
 <div id="settings">
-  <div id="account_settings"></div>
-  <div id="token_settings"></div>
+  <div id="account-details"></div>
 </div>
 
 <div class="settings__footer">
