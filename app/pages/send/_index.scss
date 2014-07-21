@@ -9,14 +9,14 @@
 .send__address {
 
   display: flex;
+  flex-flow: row wrap;
   margin-bottom: 20px;
 
   ._label {
     @include noselect;
     cursor: pointer;
     display: block;
-    flex: 1;
-    margin-right: 10px;
+    flex: 1 100%;
 
     @include breakpoint(portrait) {
       font-size: 20px;
@@ -25,11 +25,28 @@
 
   ._btn {
     @extend .hivebtn;
-    margin-top: 29px;
+    flex: 2;
+    margin-top: 10px;
     padding: 0;
     width: 42px;
     height: 42px;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ._icon {
+      width: 10px;
+      height: 10px;
+    }
+
+
+    ._title {
+      padding-left: 5px;
+      padding-right: 6px;
+      padding-top: 4px;
+      font-size: 16px;
+
+    }
 
     @include breakpoint(portrait) {
       margin-top: 35px;
@@ -40,11 +57,6 @@
     ._icon {
       width: 30px;
       height: 30px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-top: -15px;
-      margin-left: -15px;
 
       @include breakpoint(portrait) {
         width: 44px;

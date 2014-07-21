@@ -8,17 +8,20 @@
         </label>
 
         {{#isCordova}}
-          <div class="_btn qr" on-click="open-qr">
-            <span class="_icon">
-              {{>svg_qr}}
-            </span>
-          </div>
         {{/isCordova}}
+
+        <div class="_btn qr" on-click="open-qr">
+          <span class="_icon">
+            {{>svg_qr}}
+          </span>
+          <span class="_title">Scan QR</span>
+        </div>
 
         <div class="_btn" on-click="open-geo">
           <span class="_icon">
             {{>svg_waggle}}
           </span>
+          <span class="_title">Waggle</span>
         </div>
       </div>
 

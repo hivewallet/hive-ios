@@ -1,4 +1,5 @@
 #tokens {
+  margin-top: 68px;
 
   &.content {
     padding: 0px;
@@ -87,6 +88,13 @@
 
 .token--litecoin {
   background-color: #C4C4C4;
+  ._name {
+    color: darken($silver, 30%);
+  }
+}
+
+.token--testnet {
+  background-color: rgb(116, 255, 116);
   ._name {
     color: darken($silver, 30%);
   }
