@@ -39,8 +39,13 @@
     left: 0;
     right: 0;
 
-  margin-top: 97px;
-  margin-bottom: 80px;
+    margin-top: 77px;
+    margin-bottom: 80px;
+
+    @include breakpoint(iphone5) {
+      margin-top: 97px;
+      margin-bottom: 80px;
+    }
 
     &.current {
       display: block;
