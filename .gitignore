@@ -9,3 +9,5 @@ cordova/platforms/ios/cordova/console.log
 cordova/platforms/ios/Hive.xcodeproj/project.xcworkspace/xcuserdata/
 *.xcuserdatad
 .vagrant
+.vagrant
+provisioners

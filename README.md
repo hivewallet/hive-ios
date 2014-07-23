@@ -64,6 +64,12 @@ Hive can also be packaged as an iOS app using Apache Cordova. To run locally, ma
 
 Obviously we can't start a server or CouchDB within the iOS app, so it instead makes requests to the Heroku endpoint.
 
+### Testing deployment inside Vagrant
+
+1. [Install Vagrant](http://www.vagrantup.com/downloads.html)
+2. symlink the playbook file into place: `ln -s path/to/ansible/repo provisioners`
+3. `vagrant up` or `vagrant reload --provision`
+
 ## Contributing
 
 ### Instructions
@@ -72,6 +78,12 @@ Obviously we can't start a server or CouchDB within the iOS app, so it instead m
 2. Push changes to your fork
 3. Create a pull request
 
+Pull requests are very welcome. If you want to send us any code, try your best to adhere to our coding guidelines:
+
+- [JavaScript](https://github.com/hivewallet/hive-js/wiki/Hive-JS-coding-style-guide)
+- [HTML](https://github.com/hivewallet/hive-js/wiki/Hive-HTML-coding-style-guide)
+- [CSS](https://github.com/hivewallet/hive-js/wiki/Hive-CSS-coding-style-guide)
+- [Git](https://github.com/hivewallet/hive-js/wiki/Hive-Git-guidelines)
 
 ### Running the test suite
 
@@ -84,8 +96,16 @@ Obviously we can't start a server or CouchDB within the iOS app, so it instead m
     # just client
     npm run test-client
 
-### Testing deployment inside Vagrant
+### Donation
 
-1. [Install Vagrant](http://www.vagrantup.com/downloads.html)
-2. symlink the playbook file into place: `ln -s path/to/ansible/repo provisioners`
-3. `vagrant up` or `vagrant reload --provision`
+If you like Hive, you can also send us donations in BTC to 142m1MpXHhymF4aASiWwYohe1Y55v5BQwc
+
+## License
+
+Hive is released under GNU General Public License, version 2 or later.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.

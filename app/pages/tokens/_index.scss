@@ -3,9 +3,6 @@
 
   &.content {
     padding: 0px;
-    @include breakpoint(portrait) {
-      padding-top: 20px;
-    }
   }
 
   ._title {
@@ -74,7 +71,7 @@
   }
 
   &.current {
-    cursor: default;
+    display: none;
   }
 }
 
