@@ -9,7 +9,13 @@
 
 #main {
   @include clear;
-  position: relative;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+
   background-color: $background;
   flex: 1; // take up full width
 
@@ -18,19 +24,23 @@
   box-shadow: -5px 0px 15px 0px rgba(25,25,25,0.3);
 
   &.closed {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     transform: translateX(273px);
-    overflow: hidden;
   }
 
   .content {
 
     display: none;
     padding: 20px;
+
+    position: absolute;
+    overflow-y: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+  margin-top: 97px;
+  margin-bottom: 80px;
 
     &.current {
       display: block;
