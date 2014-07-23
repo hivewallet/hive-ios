@@ -15,7 +15,7 @@
         </a>
         <a class="_btn" on-click="copy">
           <span class="_icon">
-            {{>svg_email}}
+            {{>svg_clipboard}}
           </span>
         </a>
       </div>
