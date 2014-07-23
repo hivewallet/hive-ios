@@ -1,23 +1,36 @@
 
+
 #send {
-  padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 120px;
+  &.content {
+    padding-bottom: 10px;
+
+    @include breakpoint(iphone5) {
+      padding-bottom: 20px;
+    }
+  }
 }
 
 .send__address {
 
   display: flex;
-  flex-flow: row wrap;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+
+  @include breakpoint(iphone5) {
+    flex-flow: row wrap;
+  }
 
   ._label {
     @include noselect;
+    font-size: 14px;
     cursor: pointer;
     display: block;
-    flex: 1 100%;
+    margin-right: 5px;
 
+    @include breakpoint(iphone5) {
+      font-size: 16px;
+      flex: 1 100%;
+      margin-right: 0px;
+    }
     @include breakpoint(portrait) {
       font-size: 20px;
     }
@@ -25,20 +38,26 @@
 
   ._btn {
     @extend .hivebtn;
-    flex: 2;
-    margin-top: 10px;
+
+    margin-top: 24px;
     padding: 0;
-    width: 42px;
-    height: 42px;
+    width: 70px;
+    height: 44px;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    ._icon {
-      width: 10px;
-      height: 10px;
+    @include breakpoint(iphone5) {
+      flex: 2;
+      margin-top: 5px;
+      width: 42px;
     }
 
+    @include breakpoint(portrait) {
+      margin-top: 35px;
+      width: 59px;
+      height: 59px;
+    }
 
     ._title {
       padding-left: 5px;
@@ -46,12 +65,11 @@
       padding-top: 4px;
       font-size: 16px;
 
-    }
+      display: none;
 
-    @include breakpoint(portrait) {
-      margin-top: 35px;
-      width: 59px;
-      height: 59px;
+      @include breakpoint(iphone5) {
+        display: block;
+      }
     }
 
     ._icon {
@@ -67,17 +85,16 @@
     }
 
     &.qr {
-      margin-right: 10px;
+      margin-right: 5px;
     }
   }
 
   ._input {
     @extend .generic_box;
     @extend .jigsaw-light;
-    margin-top: 5px;
     padding-left: 10px;
     border-radius: 2px;
-
+    margin-top: 3px;
     height: auto;
 
     &:active, &:focus {
@@ -98,8 +115,14 @@
 
   ._label {
     @include noselect;
+    font-size: 14px;
     cursor: pointer;
     display: block;
+    margin-bottom: 3px;
+
+    @include breakpoint(iphone5) {
+      font-size: 16px;
+    }
 
     @include breakpoint(portrait) {
       font-size: 20px;
@@ -169,7 +192,6 @@
       &:focus {
         outline: none;
       }
-
     }
 
     &.dropdown {
@@ -212,7 +234,7 @@
 
 ._input-group {
   position: relative;
-  margin-top: 5px;
+  // margin-top: 5px;
 
   & + ._input-group {
     margin-top: 0;
@@ -230,7 +252,10 @@
 }
 
 .send__buttons {
-  margin-top: 20px;
+  margin-top: 14px;
+  @include breakpoint(iphone5) {
+    margin-top: 18px;
+  }
   @include breakpoint(portrait) {
     margin-top: 40px;
   }

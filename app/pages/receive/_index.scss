@@ -1,11 +1,11 @@
 
 #receive {
-  padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 120px;
 
   ._title {
+    font-size: 14px;
+    @include breakpoint(iphone5) {
+      font-size: 16px;
+    }
     @include breakpoint(portrait) {
       font-size: 20px;
     }
@@ -14,11 +14,14 @@
 
 .address__box {
   @extend .generic_box;
-  margin-top: 5px;
   margin-bottom: 20px;
 
   position: relative;
+  margin-top: 3px;
 
+  @include breakpoint(iphone5) {
+    margin-top: 5px;
+  }
   @include breakpoint(portrait) {
     margin-bottom: 40px;
   }
@@ -82,7 +85,7 @@
   ._help {
     @include clickbtn;
     position: absolute;
-    top: 0;
+    top: -3px;
     right: -5px;
     font-size: 12px;
     text-align: center;
@@ -90,6 +93,10 @@
     height: 26px;
     padding: 4px;
     opacity: 0.4;
+
+    @include breakpoint(iphone5) {
+      top: 0;
+    }
 
     @include breakpoint(portrait) {
       width: 32px;
@@ -110,8 +117,12 @@
 
 .geo__box {
   @extend .generic_box;
-  margin-top: 5px;
   text-align: center;
+  margin-top: 3px;
+
+  @include breakpoint(iphone5) {
+    margin-top: 5px;
+  }
 
   @include breakpoint(portrait) {
     font-size: 26px;
