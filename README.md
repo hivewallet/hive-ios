@@ -34,7 +34,7 @@ Build & run the iOS app:
 
 Build the js app for release:
 
-    DB_HOST=[prod db host] PROXY_URL=[prod proxy URL] HOST=web.hivewallet.com npm run build
+    DB_HOST=[prod db host] PROXY_URL=[prod proxy URL] HOST=web.hivewallet.com NODE_ENV=production npm run build
 
 Build and sign the iOS app
 
