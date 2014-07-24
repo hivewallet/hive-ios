@@ -78,7 +78,9 @@
       height: 30px;
 
       .svg-qr, .svg-waggle {
-        fill: #3180E7;
+        @include breakpoint(iphone5) {
+          fill: #3180E7;
+        }
       }
 
       @include breakpoint(portrait) {

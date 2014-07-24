@@ -45,48 +45,36 @@
   }
 
   ._actions {
-    padding-top: 20px;
-    display: flex;
-    flex-flow: row wrap;
-
-    .mail {
-      margin-right: 5px;
-    }
-
-    @include breakpoint(portrait) {
-      padding-top: 40px;
-    }
+    margin-top: 10px;
+    display: flex 1;
 
     ._btn {
       @extend .hivebtn;
-      flex: 1;
-      height: 36px;
-      right: 3px;
-      top: 50%;
+      margin-bottom: 5px;
       padding: 0;
-      padding-top: 7px;
-      border-radius: 2px;
+      height: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      @include breakpoint(portrait) {
-        width: 60px;
-        height: 60px;
+      & + ._btn {
+        margin-bottom: 0px;
+      }
+
+      ._title {
+        margin: 0;
+        padding-left: 5px;
+        padding-right: 6px;
+        padding-top: 4px;
+        font-size: 16px;
       }
 
       ._icon {
-        width: 26px;
-        height: 26px;
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-top: -13px;
-        margin-left: -13px;
+        width: 30px;
+        height: 30px;
 
-        @include breakpoint(portrait) {
-          width: 40px;
-          height: 40px;
-          margin-top: -20px;
-          margin-left: -20px;
+        .svg-email, .svg-clipboard {
+          fill: #3180E7;
         }
       }
     }
