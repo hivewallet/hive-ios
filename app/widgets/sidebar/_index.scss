@@ -10,10 +10,10 @@
 
   background-color: $purple;
 
-  @include breakpoint(iphone5) {
-    padding-top: 29px;
-    padding-bottom: 30px;
-  }
+  // @include breakpoint(iphone5) {
+  //   padding-top: 29px;
+  //   padding-bottom: 30px;
+  // }
 
   @include breakpoint(portrait) {
     padding-top: 48px;

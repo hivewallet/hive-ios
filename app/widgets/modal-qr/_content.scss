@@ -45,8 +45,13 @@
   }
 
   ._actions {
-    text-align: center;
     padding-top: 20px;
+    display: flex;
+    flex-flow: row wrap;
+
+    .mail {
+      margin-right: 5px;
+    }
 
     @include breakpoint(portrait) {
       padding-top: 40px;
@@ -54,8 +59,7 @@
 
     ._btn {
       @extend .hivebtn;
-      display: inline-block;
-      width: 36px;
+      flex: 1;
       height: 36px;
       right: 3px;
       top: 50%;

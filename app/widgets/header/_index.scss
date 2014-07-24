@@ -1,16 +1,16 @@
 .header {
   display: flex;
   justify-content: space-between;
-  padding-top: 5px;
+  padding-top: 4px;
   background-color: $purple;
   color: white;
   padding-top: 12px;
   padding-bottom: 12px;
 
-  @include breakpoint(iphone5) {
-    padding-top: 22px;
-    padding-bottom: 22px;
-  }
+  // @include breakpoint(iphone5) {
+  //   padding-top: 14px;
+  //   padding-bottom: 14px;
+  // }
 
   @include breakpoint(portrait) {
     padding-top: 40px;
