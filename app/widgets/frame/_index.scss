@@ -49,11 +49,14 @@
     //   margin-bottom: 80px;
     // }
 
+    @include breakpoint(portrait) {
+      margin-top: 154px;
+      margin-bottom: 134px;
+      padding: 40px;
+    }
+
     &.current {
       display: block;
-    }
-    @include breakpoint(portrait) {
-      padding: 40px;
     }
   }
 
