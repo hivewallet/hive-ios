@@ -1,5 +1,4 @@
 'use strict'
 
-module.exports = function() {
-  return window.hasOwnProperty('cordova') ? 'https://hive-js.herokuapp.com' : window.location.origin;
-}
+var scheme = process.env.NODE_ENV === 'production' ? 'https://' : 'http://'
+module.exports = scheme + process.env.HOST

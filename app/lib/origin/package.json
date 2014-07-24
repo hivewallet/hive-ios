@@ -4,5 +4,8 @@
   "description": "",
   "main": "index.js",
   "author": "Matt Lenz",
-  "license": "GPL-3.0"
+  "license": "GPL-2.0+",
+  "browserify": {
+    "transform": [ "envify" ]
+  }
 }
