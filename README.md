@@ -28,7 +28,7 @@ Build & run the iOS app:
 
     npm install -g cordova
     cd ./cordova
-    cordova run ios --emulator` (or `--device`)
+    cordova run ios --emulator (or --device)
 
 ## Release
 
