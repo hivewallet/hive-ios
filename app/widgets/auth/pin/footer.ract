@@ -13,7 +13,7 @@
 
   {{#opening}}
     <div class="auth__altmsg">
-      <span>This might take some time, please be patient.</span>
+      <span>This might take some time,<br/> please be patient.</span>
     </div>
   {{/opening}}
 {{/userExists}}
