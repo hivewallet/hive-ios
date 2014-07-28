@@ -45,12 +45,12 @@
 		AFFB830EF2C84B2587CDED8D /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 276B93D5FFC7489DA722DDEC /* CDVBarcodeScanner.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B2D1350909634F01BAC63D29 /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEF350D54A2C4CCD8F792A82 /* scannerOverlay.xib */; };
 		CA0CC149BFB14FFAB683B792 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92FA53A79EA4E1DBD3226C0 /* QuartzCore.framework */; };
+		D362FBD366294F37B73427F5 /* CDVClipboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D90DB6F355FE41B69D3A77D5 /* CDVClipboard.m */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		DA77EFCC717A41FAA065E6B7 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB2DD48C02649ECA1AD3D61 /* CDVDevice.m */; };
 		DBFA521A2C174230AAA758BE /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A9C28DCCB464188C264B2 /* CDVLocation.m */; };
 		E67A27077545433785A3D29D /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F791B689B5BD4C5EA21234E3 /* CDVStatusBar.m */; };
 		F496ED016734413E88A09DC9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB1DC0ECC914DC89ACCDC7C /* AVFoundation.framework */; };
-		D362FBD366294F37B73427F5 /* CDVClipboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D90DB6F355FE41B69D3A77D5 /* CDVClipboard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +100,7 @@
 		30A0434714DC770100060A13 /* se */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = se; path = Localizable.strings; sourceTree = "<group>"; };
 		30FC414816E50CA1004E6F35 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Hive-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hive-Prefix.pch"; sourceTree = "<group>"; };
+		3A05B336488842C3BCA6FE8D /* CDVClipboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVClipboard.h; path = com.verso.cordova.clipboard/CDVClipboard.h; sourceTree = "<group>"; };
 		5544C525664E42C9B48315B4 /* CDVLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVLogger.m; path = org.apache.cordova.console/CDVLogger.m; sourceTree = "<group>"; };
 		5AEE5B34173C68D80009041E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -124,6 +125,7 @@
 		BA40CC04E68F40FFAE600416 /* CDVLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVLocation.h; path = org.apache.cordova.geolocation/CDVLocation.h; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		D7824DF6BA3940DD9C5EB843 /* libz.dylib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D90DB6F355FE41B69D3A77D5 /* CDVClipboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVClipboard.m; path = com.verso.cordova.clipboard/CDVClipboard.m; sourceTree = "<group>"; };
 		D92FA53A79EA4E1DBD3226C0 /* QuartzCore.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DEB2DD48C02649ECA1AD3D61 /* CDVDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVDevice.m; path = org.apache.cordova.device/CDVDevice.m; sourceTree = "<group>"; };
 		DEF350D54A2C4CCD8F792A82 /* scannerOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scannerOverlay.xib; sourceTree = "<group>"; };
@@ -134,8 +136,6 @@
 		F791B689B5BD4C5EA21234E3 /* CDVStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVStatusBar.m; path = org.apache.cordova.statusbar/CDVStatusBar.m; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = Hive/config.xml; sourceTree = "<group>"; };
 		F8D5E9D183354764ADD552EA /* zxing-all-in-one.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = unknown; name = "zxing-all-in-one.cpp"; path = "com.phonegap.plugins.barcodescanner/zxing-all-in-one.cpp"; sourceTree = "<group>"; };
-		D90DB6F355FE41B69D3A77D5 /* CDVClipboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVClipboard.m"; path = "com.verso.cordova.clipboard/CDVClipboard.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		3A05B336488842C3BCA6FE8D /* CDVClipboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVClipboard.h"; path = "com.verso.cordova.clipboard/CDVClipboard.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,7 +377,7 @@
 				LastUpgradeCheck = 510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 286K53G2B5;
+						DevelopmentTeam = FFNK74S4X3;
 					};
 				};
 			};
