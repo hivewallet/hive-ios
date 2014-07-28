@@ -1,4 +1,14 @@
+#header {
+
+}
+
+
 .header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2000;
+
   display: flex;
   justify-content: space-between;
   padding-top: 4px;
