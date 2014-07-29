@@ -3,6 +3,9 @@ npm-debug.log
 bundle.*
 build/
 .DS_Store
+cordova/config.xml
+cordova/platforms/ios/Hive/config.xml
+cordova/platforms/ios/Hive/Hive-Info.plist
 cordova/www/
 cordova/platforms/ios/www/
 cordova/platforms/ios/cordova/console.log

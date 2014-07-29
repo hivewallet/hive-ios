@@ -9,9 +9,10 @@ var glob = require('glob')
 var refresh = require('gulp-livereload')
 var lrserver = require('tiny-lr')()
 var buildServer = require('./server/express')
-var sketch = require('gulp-sketch');
-var replace = require('gulp-replace');
+var sketch = require('gulp-sketch')
+var replace = require('gulp-replace')
 var clean = require('gulp-clean')
+var rename = require('gulp-rename')
 
 // server --------------------------------- //
 
@@ -163,10 +164,27 @@ gulp.task('cordova-splash', function() {
     .pipe(gulp.dest('./cordova/platforms/ios/Hive/Resources/splash/'));
 })
 
+gulp.task('cordova-config', function(){
+  var accessOpen = '<access origin="'
+  var accessClose = '" />'
+  var hostWhiteLists = [
+    accessOpen + process.env.DB_HOST + accessClose,
+    accessOpen + process.env.HOST + accessClose,
+    accessOpen + process.env.PROXY_URL + accessClose,
+    "</widget>"
+  ].join("\n")
+
+  gulp.src('./cordova/config_template.xml')
+    .pipe(replace('</widget>', hostWhiteLists))
+    .pipe(rename('./config.xml'))
+    .pipe(gulp.dest('./cordova/'));
+})
+
+
 // $ gulp build --------------------------- //
 
-gulp.task('build', ['html', 'loader', 'scripts', 'styles', 'assets']);
+gulp.task('build', ['html', 'loader', 'scripts', 'styles', 'assets', 'cordova-config']);
 
 // $ gulp ---------------------------------- //
 
-gulp.task('default', ['loader', 'scripts', 'styles', 'html', 'assets', 'tests', 'serve', 'watch']);
+gulp.task('default', ['loader', 'scripts', 'styles', 'html', 'assets', 'tests', 'serve', 'watch', 'cordova-config']);

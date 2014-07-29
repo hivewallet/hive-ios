@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.hivewallet.app" version="0.1.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Hive</name>
+    <description>Hive Cryptocurrency Wallet for iOS</description>
+    <author href="http://github.com/hivewallet/hive-js">Hive</author>
+    <content src="index.html" />
+    <access origin="api.bitcoinaverage.com" />
+    <access origin="chain.so" />
+    <access origin="btc.blockr.io" />
+    <access origin="tbtc.blockr.io" />
+    <access origin="ltc.blockr.io" />
+    <access origin="hive-proxy.herokuapp.com" />
+    <access origin="s3.amazonaws.com" />
+    <access origin="www.gravatar.com" />
+
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+
+    <preference name="DisallowOverscroll" value="true"/>
+
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false"/>
+</widget>
