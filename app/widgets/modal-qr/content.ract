@@ -18,7 +18,7 @@
           <span class="_icon">
             {{>svg_clipboard}}
           </span>
-          <span class="_title">Copy to clipboard</span>
+          <span class="_title">{{clipboard_msg}}</span>
         </a>
       </div>
     </div>
