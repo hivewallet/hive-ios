@@ -11,6 +11,8 @@ var showError = require('hive-modal-flash').showError
 var showInfo = require('hive-modal-flash').showInfo
 var showConfirmation = require('hive-modal-confirm-send')
 var validateSend = require('hive-wallet').validateSend
+var URI = require('URIjs')
+var querystring = require('querystring')
 
 module.exports = function(el){
   var ractive = new Ractive({
@@ -39,8 +41,16 @@ module.exports = function(el){
     }
 
     var successHandler = function (result) {
-      var walletAddress = result.text.replace('bitcoin:', '')
-      ractive.set('to', walletAddress)
+      if(result.text) {
+        var address = new URI(result.text)
+        ractive.set('to', address.path())
+
+        if(address.query()) {
+          var query = querystring.parse(address.query())
+
+          if(query.amount) ractive.set('value', query.amount)
+        }
+      }
     }
 
     cordova.plugins.barcodeScanner.scan(successHandler, failHandler)
