@@ -279,6 +279,19 @@
 .send__btn {
   @extend .hivebtn;
 
+  &:active {
+    position: relative;
+    color: rgba(255,255,255, 0.3);
+    background-color: #2d5f8d;
+    box-shadow:inset 0 1px 1px 1px darken(#2d5f8d, 20%);
+    transform: translate(0px, 3px);
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
   @include breakpoint(portrait) {
     font-size: 26px;
     border-radius: 3px;
