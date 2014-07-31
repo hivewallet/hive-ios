@@ -12,13 +12,14 @@ Phonegapped version of [hive-js](https://github.com/hivewallet/hive-js/)
 - CouchDB. See https://github.com/hivewallet/hive-js#setup-couchdb for installation & configuration instructions
 - XCode
 
-### Grab the source
+### Grab the source & install stuff
 
     git clone git@github.com:hivewallet/hive-ios.git
     cd hive-ios
     npm install
+    npm install -g cordova
 
-### Profit
+### Building for development
 
 Build the js app & start the local server:
 
@@ -26,17 +27,44 @@ Build the js app & start the local server:
 
 Build & run the iOS app:
 
-    npm install -g cordova
-    cd ./cordova
+    cd cordova
     cordova run ios --emulator (or --device)
 
-## Release
+Or alternatively:
+
+    cordova build ios
+
+and then use Xcode to run the simulator in a chosen mode (e.g. 3.5-inch iPhone or iPad).
+
+### TestFlight distribution
+
+Prepare a provisioning profile:
+
+- gather testers on TestFlight - people can be invited manually from the Dashboard ("Invite people") and then they have to confirm and add a device, or they can sign up themselves through a public link (see "People" -> "Recruited" -> "Recruitment link") and then you confirm them on the "Recruited" page
+- to add newly registered devices to a new build, check the checkboxes on the list and select "Actions" -> "Export iOS devices"
+  - when exporting, select only new users, because Apple will reject the whole list if it includes devices it already has ಠ_ಠ
+- take the exported file, go to the "Certificates, Identifiers & Profiles" site on [developer.apple.com](http://developer.apple.com), open "Devices" page and upload it there
+- go to "Provisioning profiles" and create a new ad-hoc profile with all devices selected
+- download the new profile and open it, or go to Preferences in Xcode, and under Accounts -> Apple ID -> Hive Labs click "View Details" and click the refresh button to download the profile from there
 
 Build the js app for release:
 
     DB_HOST=[prod db host] PROXY_URL=[prod proxy URL] HOST=web.hivewallet.com NODE_ENV=production npm run build
+    cd cordova
+    cordova build ios --device --release
 
-Build and sign the iOS app
+In Xcode, use "Archive" to bundle the app into an .ipa file ("Device" must be selected in the top bar) and then export it using "Distribute" -> "Save for Enterprise or Ad Hoc Deployment", sign it with the newest provisioning profile. Then go to TestFlight, upload the .ipa there and send it to testers.
+
+Note: you can also upload a new provisioning profile with new devices to TestFlight to re-sign an existing build without rebuilding it in Xcode.
+
+### App Store distribution
+
+Prepare a provisioning profile - this time choose "App Store" when creating it on the "Certificates, Identifiers & Profiles" site (you don't need any devices).
+
+Go to [iTunes Connect](https://itunesconnect.apple.com), log in as the team admin. Select the Hive app and add a new version. Edit metadata if necessary. Get to the state where it says "Ready for upload".
+
+Build the app for release as above. Create an archive, and then use "Distribute" -> "Submit to the iOS App Store".
+
 
 ## Contributing
 
