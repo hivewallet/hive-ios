@@ -35,6 +35,10 @@ module.exports = function(el){
     ractive.set('to', address)
   })
 
+  ractive.on('open-fiat', function() {
+    ractive.nodes['fiatSelect'].focus()
+  })
+
   ractive.on('open-qr', function(){
     var failHandler = function (error) {
       alert(error);

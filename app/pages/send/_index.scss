@@ -142,7 +142,7 @@
     @include noselect;
     @extend .jigsaw-light;
     position: absolute;
-    z-index: 500;
+    z-index: 2000;
     cursor: pointer;
     display: block;
     text-align: right;
@@ -188,7 +188,7 @@
     @include noselect;
     @extend .jigsaw-light;
     position: absolute;
-    z-index: 500;
+    z-index: 2000;
     cursor: pointer;
     display: block;
     text-align: right;
@@ -226,7 +226,7 @@
     border-top-right-radius: 2px;
     border-top-left-radius: 2px;
     position: relative;
-    z-index: 200;
+    z-index: 1000;
 
     &:active, &:focus {
       outline: 0;
@@ -323,4 +323,14 @@
       fill: darken($grey, 20%);
     }
   }
+}
+
+
+.fiat-tap-overlay {
+  position: absolute;
+  z-index: 3000;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100px;
 }

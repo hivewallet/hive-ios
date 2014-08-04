@@ -36,8 +36,9 @@
 
           {{^exchangeRateUnavailable}}
           <div class="_input-group">
+            <span on-click="open-fiat" class="fiat-tap-overlay"></span>
             <span class="_currency dropdown">
-              <select value="{{selectedFiat}}">
+              <select id="fiatSelect" value="{{selectedFiat}}">
                 {{#currencies}}
                   <option value="{{.}}">{{.}}</option>
                 {{/currencies}}
@@ -49,8 +50,9 @@
 
           {{#exchangeRateUnavailable}}
           <div class="_input-group">
+            <span on-click="open-fiat" class="fiat-tap-overlay"></span>
             <span class="_currency--error dropdown">
-              <select value="{{selectedFiat}}">
+              <select id="fiatSelect" value="{{selectedFiat}}">
                 {{#currencies}}
                   <option value="{{.}}">{{.}}</option>
                 {{/currencies}}
