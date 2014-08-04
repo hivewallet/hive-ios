@@ -37,9 +37,6 @@ gulp.task('styles', function(){
 });
 
 gulp.task('scripts', function(){
-  gulp.src('./app/ios.js')
-    .pipe(gulp.dest('./cordova/www/assets/js/'));
-
   var bundler = browserify('./app/application.js')
   bundle(bundler, './application.js')
     .pipe(gulp.dest('./build/assets/js/'))
@@ -61,7 +58,7 @@ gulp.task('loader', function(){
 });
 
 gulp.task('html', function(){
-  var injectScripts = ['cordova.js', 'assets/js/ios.js'];
+  var injectScripts = ['cordova.js'];
   var injectTags = injectScripts.map(function(src) {
     return '  <script src="'+src+'"></script>'
   }).concat('</head>').join('\n');

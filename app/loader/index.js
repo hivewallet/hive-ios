@@ -7,25 +7,12 @@ require('browsernizr/test/blob')
 require('browsernizr/test/crypto/getrandomvalues')
 
 var token = require('hive-network')()
-var animateLogo = require('hive-transitions/loader.js').in
-var fadeOut = require('hive-transitions/loader.js').out
 var Modernizr = require('browsernizr')
 
 document.getElementsByTagName('html')[0].classList.add(token)
 
-var elems =  {
-  block1: document.getElementById('logo_block1'),
-  block2: document.getElementById('logo_block2'),
-  block3: document.getElementById('logo_block3'),
-  block4: document.getElementById('logo_block4'),
-  block5: document.getElementById('logo_block5'),
-}
-
 var containerEl = document.getElementById('loader')
-var keyEl = document.getElementById('logo_key')
 var goodToGo;
-
-animateLogo(elems)
 
 Modernizr.on('indexeddb', function(hasIndexedDB){
   var supportsPouchDB = hasIndexedDB || Modernizr.websqldatabase
@@ -39,9 +26,10 @@ Modernizr.on('indexeddb', function(hasIndexedDB){
     },
     complete: function() {
       if(goodToGo) {
-        setTimeout(function(){
-          fadeOut(containerEl, keyEl)
-        }, 1000)
+        window.initHiveApp()
+        setTimeout(function() {
+            navigator.splashscreen.hide();
+        }, 2000);
       }
     }
   })
