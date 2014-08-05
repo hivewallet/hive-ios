@@ -31,12 +31,13 @@
 
           <div class="_input-group">
             <span class="_currency">{{denomination}}</span>
-            <input id="bitcoin" class="_input" type="number" min="0" value="{{value}}" on-keyup="bitcoin-to-fiat" on-enter="open-send">
+            <input id="bitcoin" class="_input" type="number" min="0" value="{{value}}" on-keyup="bitcoin-to-fiat" on-enter="open-send" on-focus="focusAmountInput" on-blur="blurAmountInput">
           </div>
 
           {{^exchangeRateUnavailable}}
           <div class="_input-group">
             <span on-click="open-fiat" class="fiat-tap-overlay"></span>
+            <input id="fiat" class="_input" type="number" min="0" value="{{fiatValue}}" on-keyup="fiat-to-bitcoin" on-focus="focusAmountInput" on-blur="blurAmountInput">
             <span class="_currency dropdown">
               <select id="fiatSelect" value="{{selectedFiat}}">
                 {{#currencies}}
@@ -44,13 +45,13 @@
                 {{/currencies}}
               </select>
             </span>
-            <input id="fiat" class="_input" type="number" min="0" value="{{fiatValue}}" on-keyup="fiat-to-bitcoin">
           </div>
           {{/exchangeRateUnavailable}}
 
           {{#exchangeRateUnavailable}}
           <div class="_input-group">
             <span on-click="open-fiat" class="fiat-tap-overlay"></span>
+            <input id="fiat" class="_input _error" type="number" min="0" value="{{fiatValue}}" on-keyup="fiat-to-bitcoin" on-focus="focusAmountInput" on-blur="blurAmountInput">
             <span class="_currency--error dropdown">
               <select id="fiatSelect" value="{{selectedFiat}}">
                 {{#currencies}}
@@ -58,7 +59,6 @@
                 {{/currencies}}
               </select>
             </span>
-            <input id="fiat" class="_input _error" type="number" min="0" value="{{fiatValue}}" on-keyup="fiat-to-bitcoin">
           </div>
           <div class="_input-error__message">
             <span>Exchange rate unavailable for the selected currency</span>
