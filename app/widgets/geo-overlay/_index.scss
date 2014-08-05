@@ -159,24 +159,23 @@
   z-index: 500;
 
   ._icon {
-    width: 140px;
-    height: 160px;
+    width: 70px;
+    height: 70px;
     margin: 0 auto;
-    margin-bottom: 20px;
+    opacity: 0.3;
+    transform: rotate(60deg);
+
+    margin-bottom: 5px;
   }
 
   ._message {
     font-size: 16px;
     text-align: center;
     color: white;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
   }
 
   ._btn {
     @extend .hivebtn--yellow;
-    color: lighten($purple, 10%);
-    &:hover {
-      color: lighten($purple, 10%);
-    }
   }
 }
