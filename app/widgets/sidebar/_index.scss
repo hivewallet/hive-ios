@@ -222,6 +222,10 @@
 .settings__input-group {
   position: relative;
 
+  &.hidden {
+    display: none;
+  }
+
   & + .settings__input-group {
     padding-top: 10px;
   }

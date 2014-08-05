@@ -8,11 +8,11 @@
 <div id="details-edit">
   <div class="settings__input-group">
     <label class="_label">Your name
-      <input type="text" value="{{user.name}}" class="_input" />
+      <input type="text" value="{{user.name}}" class="_input" on-enter="submit-details"/>
     </label>
   </div>
 
-  <div class="settings__input-group">
+  <div class="settings__input-group hidden">
     <label class="_label">Gravatar Email
       <input value="{{user.email}}" type="email" class="_input" on-enter="submit-details"/>
     </label>
