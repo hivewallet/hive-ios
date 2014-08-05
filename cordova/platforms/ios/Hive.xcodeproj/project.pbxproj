@@ -584,7 +584,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hive Labs Ltd (VK4N5L9C69)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hive/Hive-Prefix.pch";
@@ -611,7 +611,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = Hive;
-				PROVISIONING_PROFILE = "B7DA1148-B2BB-4E4F-9BC6-5AB3FB1E7FDD";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
