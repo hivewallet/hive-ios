@@ -178,4 +178,13 @@
   ._btn {
     @extend .hivebtn--yellow;
   }
+
+  &.is_searching {
+    ._message {
+      opacity: 0.3;
+    }
+    ._icon {
+      opacity: 0.1;
+    }
+  }
 }
