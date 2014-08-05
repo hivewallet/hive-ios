@@ -43,11 +43,9 @@
     margin-top: 77px;
     margin-bottom: 80px;
 
-    // @include breakpoint(iphone5) {
-    //   padding-top: 20px;
-    //   margin-top: 80px;
-    //   margin-bottom: 80px;
-    // }
+    @include breakpoint(iphone5) {
+      padding-top: 20px;
+    }
 
     @include breakpoint(portrait) {
       margin-top: 154px;

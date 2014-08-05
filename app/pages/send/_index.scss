@@ -3,10 +3,6 @@
 #send {
   &.content {
     padding-bottom: 10px;
-
-    @include breakpoint(iphone5) {
-      // padding-bottom: 20px;
-    }
   }
 }
 
@@ -50,7 +46,7 @@
 
     @include breakpoint(iphone5) {
       flex: 2;
-      margin-top: 12px;
+      margin-top: 14px;
       width: 42px;
     }
 
@@ -270,7 +266,7 @@
 .send__buttons {
   margin-top: 14px;
   @include breakpoint(iphone5) {
-    margin-top: 12px;
+    margin-top: 15px;
   }
   @include breakpoint(portrait) {
     margin-top: 40px;
