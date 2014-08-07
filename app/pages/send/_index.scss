@@ -9,7 +9,7 @@
 .send__address {
 
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 
   @include breakpoint(iphone5) {
     flex-flow: row wrap;

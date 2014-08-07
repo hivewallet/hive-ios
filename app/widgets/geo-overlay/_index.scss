@@ -6,18 +6,23 @@
 }
 
 .geo__header {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-bottom: 20px;
+  padding-top: 29px;
+  padding-bottom: 29px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: space-between;
+
+  @include breakpoint(iphone5) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 
   ._title {
     @extend .jigsaw-light;
     text-align: center;
     flex: 1;
     font-size: 22px;
+    padding-top: 5px;
     color: white;
   }
 
@@ -109,42 +114,27 @@
 
   ._item {
     @include clickbtn;
-    display: flex;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    display: block;
+    padding-top: 30px;
+    padding-bottom: 30px;
     padding-left: 30px;
-    padding-right: 20px;
+    padding-right: 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-
-    &:first-child {
-      display: block;
-      padding-bottom: 30px;
-
-      ._avatar {
-        @include icon(120px, 120px, block);
-        -webkit-mask-size: 120px 120px;
-        margin: 0 auto;
-      }
-      ._name {
-        font-size: 24px;
-        margin-left: 0;
-        text-align: center;
-      }
-    }
   }
 
   ._avatar {
-    @include icon(60px, 60px, block);
+    @include icon(120px, 120px, block);
     -webkit-mask-image: url(../img/hex-large.svg);
-    -webkit-mask-size: 60px 60px;
+    -webkit-mask-size: 120px 120px;
+    margin: 0 auto;
   }
 
   ._name {
     @extend .jigsaw-light;
     color: white;
-    font-size: 21px;
     padding-top: 23px;
-    margin-left: 10px;
+    font-size: 24px;
+    text-align: center;
   }
 }
 
