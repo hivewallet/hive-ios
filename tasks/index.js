@@ -14,8 +14,9 @@ var tasks = {
   watch: require('./watch'),
   transifexPull: require('./transifex').pull,
   transifexPush: require('./transifex').push,
-  cordovaCopy: require('./cordova').copy,
-  cordovaConfig: require('./cordova').config
+  cordovaBuild: require('./cordova').build,
+  cordovaRunEmulator: require('./cordova').runEmulator,
+  cordovaRunDevice: require('./cordova').runDevice
 }
 
 tasks.default = function(){
