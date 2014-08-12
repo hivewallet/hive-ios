@@ -17,22 +17,29 @@ Phonegapped version of [hive-js](https://github.com/hivewallet/hive-js/)
     git clone git@github.com:hivewallet/hive-ios.git
     cd hive-ios
     npm install
-    npm install -g cordova
 
 ### Building for development
 
-Build the js app & start the local server:
+Step 1: Update configuration according to your development environment setup
 
-    DB_HOST=127.0.0.1 DB_PORT=5984 DB_USER=admin DB_PASSWORD=password COOKIE_SALT=secret PROXY_URL=https://hive-proxy.herokuapp.com HOST=localhost:8080 npm run dev
+    cp dev.config.sample dev.config
+    # then modify accordingly
 
-Build & run the iOS app:
+Step 2: Build the js app & start the local server:
 
-    cd cordova
-    cordova run ios --emulator (or --device)
+    source dev.config && npm run dev
+
+Step 3: Build & run the iOS app:
+
+    # on simulator
+    source dev.config && npm run ios-emulator
+
+    # on device
+    source dev.config && npm run ios-device
 
 Or alternatively:
 
-    cordova build ios
+    source dev.config && npm run ios-build
 
 and then use Xcode to run the simulator in a chosen mode (e.g. 3.5-inch iPhone or iPad).
 
