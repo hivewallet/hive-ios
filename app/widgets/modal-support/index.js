@@ -6,14 +6,13 @@ var showError = require('hive-modal-flash').showError
 var sendRequest = require('hive-zendesk')
 var getNetwork = require('hive-network')
 
-function fetchDetails(){
+function fetchDetails(data){
   db.get(function(err, doc){
     if(err) return showError(err);
 
-    openModal({
-      name: doc.userInfo.firstName,
-      email: doc.userInfo.email
-    })
+    data.name = doc.userInfo.firstName,
+    data.email = doc.userInfo.email
+    openModal(data)
   })
 }
 
@@ -29,7 +28,9 @@ function openModal(data){
   ractive.on('submit-details', function(){
     var hasError = ['name', 'email', 'description'].some(function(field){
       if(isBlankField(field)) {
-        showError({message: field + " can't be blank"})
+        var translatedField = ractive.data.translate(field)
+        var options = {message: "cannot be blank", interpolations: { blankField: translatedField }}
+        showError(options)
         return true
       }
 
