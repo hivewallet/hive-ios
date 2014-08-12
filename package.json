@@ -10,7 +10,10 @@
     "test": "npm run test-server; npm run test-client",
     "test-client": "karma start --single-run",
     "test-server": "mocha server/test",
-    "postinstall": "aperture open"
+    "postinstall": "aperture open",
+    "ios-build": "node build cordovaBuild",
+    "ios-emulator": "node build cordovaRunEmulator",
+    "ios-device": "node build cordovaRunDevice"
   },
   "author": "",
   "license": "GPL-2.0+",
