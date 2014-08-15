@@ -56,6 +56,20 @@ function build(callback) {
   })
 }
 
+function release(callback) {
+  async.parallel([cordovaCopy, cordovaConfig], function(err) {
+    if(err) return callback(err);
+
+    var cb = done('cordova', 'build', callback)
+    exec('cd ./cordova; ../node_modules/cordova/bin/cordova build ios --device --release', function(err, stdout, stderr){
+      console.log(stdout)
+      console.error(stderr)
+
+      cb(err)
+    })
+  })
+}
+
 function runEmulator(callback) {
   run('emulator')(callback)
 }
@@ -69,5 +83,6 @@ module.exports = {
   config: cordovaConfig,
   runEmulator: runEmulator,
   runDevice: runDevice,
-  build: build
+  build: build,
+  release: release
 }

@@ -12,6 +12,7 @@
     "test-server": "mocha server/test",
     "postinstall": "aperture open",
     "ios-build": "node build cordovaBuild",
+    "ios-build-release": "node build cordovaRelease",
     "ios-emulator": "node build cordovaRunEmulator",
     "ios-device": "node build cordovaRunDevice"
   },

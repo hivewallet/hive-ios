@@ -15,6 +15,7 @@ var tasks = {
   transifexPull: require('./transifex').pull,
   transifexPush: require('./transifex').push,
   cordovaBuild: require('./cordova').build,
+  cordovaRelease: require('./cordova').release,
   cordovaRunEmulator: require('./cordova').runEmulator,
   cordovaRunDevice: require('./cordova').runDevice
 }
