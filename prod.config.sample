@@ -1,0 +1,4 @@
+export DB_HOST=db_host
+export PROXY_URL=https://hive-proxy.herokuapp.com
+export HOST=host
+export NODE_ENV=production

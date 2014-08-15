@@ -17,22 +17,42 @@ Phonegapped version of [hive-js](https://github.com/hivewallet/hive-js/)
     git clone git@github.com:hivewallet/hive-ios.git
     cd hive-ios
     npm install
-    npm install -g cordova
 
 ### Building for development
 
-Build the js app & start the local server:
+Step 1: Create configuration for your _development_ environment setup
 
-    DB_HOST=127.0.0.1 DB_PORT=5984 DB_USER=admin DB_PASSWORD=password COOKIE_SALT=secret PROXY_URL=https://hive-proxy.herokuapp.com HOST=localhost:8080 npm run dev
+    cp dev.config.sample dev.config
+    # then modify accordingly
 
-Build & run the iOS app:
+Step 2: Build the js app & start the local server:
 
-    cd cordova
-    cordova run ios --emulator (or --device)
+    source dev.config && npm run dev
 
-Or alternatively:
+### Building for production & testing on devices
 
-    cordova build ios
+The local database won't work on the simulator or devices, so we need to build the js app for production and then copy it to cordova to build the ios app.
+
+Step 1: Create configuration for your _production_ environment setup
+
+    cp prod.config.sample prod.config
+    # then modify accordingly
+
+Step 2: Run the app build command
+
+    source prod.config && npm run build
+
+Step 3: Build & run the iOS app:
+
+    # on simulator
+    source prod.config && npm run ios-emulator
+
+    # on device
+    source prod.config && npm run ios-device
+
+Or alternatively just build:
+
+    source prod.config && npm run ios-build
 
 and then use Xcode to run the simulator in a chosen mode (e.g. 3.5-inch iPhone or iPad).
 
@@ -47,11 +67,13 @@ Prepare a provisioning profile:
 - go to "Provisioning profiles" and create a new ad-hoc profile with all devices selected
 - download the new profile and open it, or go to Preferences in Xcode, and under Accounts -> Apple ID -> Hive Labs click "View Details" and click the refresh button to download the profile from there
 
-Build the js app for release:
+Build the js app for production:
 
-    DB_HOST=[prod db host] PROXY_URL=[prod proxy URL] HOST=web.hivewallet.com NODE_ENV=production npm run build
-    cd cordova
-    cordova build ios --device --release
+    source prod.config && npm run build
+
+Build the cordova app for release:
+
+    source prod.config && npm run ios-build-release
 
 In Xcode, use "Archive" to bundle the app into an .ipa file ("Device" must be selected in the top bar) and then export it using "Distribute" -> "Save for Enterprise or Ad Hoc Deployment", sign it with the newest provisioning profile. Then go to TestFlight, upload the .ipa there and send it to testers.
 

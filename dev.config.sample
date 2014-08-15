@@ -1,0 +1,8 @@
+export DB_HOST=127.0.0.1
+export DB_PORT=5984
+export DB_USER=admin
+export DB_PASSWORD=password
+export COOKIE_SALT=secret
+export PROXY_URL=https://hive-proxy.herokuapp.com
+export HOST=localhost:8080
+export NODE_ENV=development

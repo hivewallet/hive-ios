@@ -13,3 +13,4 @@ cordova/platforms/ios/Hive.xcodeproj/project.xcworkspace/xcuserdata/
 .vagrant
 .vagrant
 provisioners
+*.config
