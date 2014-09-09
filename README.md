@@ -87,7 +87,6 @@ Go to [iTunes Connect](https://itunesconnect.apple.com), log in as the team admi
 
 Build the app for release as above. Create an archive, and then use "Distribute" -> "Submit to the iOS App Store".
 
-
 ## Contributing
 
 ### Instructions
