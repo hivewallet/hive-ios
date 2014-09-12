@@ -4,7 +4,7 @@ var xhr = require('hive-xhr')
 
 function sendRequest(paramsObj, callback) {
   // Hive version := Hive Web
-  paramsObj['fields[21684549]'] = 'hive-js'
+  paramsObj['fields[21684549]'] = 'hive-ios'
   // Browser := user agent
   paramsObj['fields[22083979]'] = navigator.userAgent
 

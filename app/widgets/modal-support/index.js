@@ -40,7 +40,7 @@ function openModal(data){
 
     if(hasError) return;
 
-    params['subject'] = 'Support request from Hive web for ' + getNetwork()
+    params['subject'] = 'Support request from Hive iOS for ' + getNetwork()
     sendRequest(params, function(){
       ractive.fire('cancel')
     })
