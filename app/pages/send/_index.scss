@@ -16,6 +16,19 @@
     margin-bottom: 18px;
   }
 
+  .input__container {
+    position: relative;
+    margin-top: 5px;
+  }
+
+  .close__input {
+    ._icon{
+      .svg-close {
+        fill: #969594;
+      }
+    }
+  }
+
   ._label {
     @include noselect;
     font-size: 14px;
@@ -97,6 +110,7 @@
     @extend .generic_box;
     @extend .jigsaw-light;
     padding-left: 10px;
+    padding-right: 38px;
     border-radius: 2px;
     margin-top: 3px;
     height: auto;
@@ -109,6 +123,7 @@
     @include breakpoint(portrait) {
       font-size: 26px;
       border-radius: 3px;
+      padding-right: 58px;
     }
   }
 }
