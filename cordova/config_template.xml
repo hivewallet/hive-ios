@@ -1,7 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.hivewallet.Hive.iOS" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.hivewallet.hive.cordova" version="1.0" android-versionCode="1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Hive</name>
-    <description>Hive Cryptocurrency Wallet for iOS</description>
+    <platform name="ios">
+        <description>Hive Cryptocurrency Wallet for iOS</description>
+    </platform>
+    <platform name="android">
+        <description>Hive Cryptocurrency Wallet for Android</description>
+    </platform>
     <author href="http://github.com/hivewallet/hive-js">Hive</author>
     <content src="index.html" />
     <access origin="api.bitcoinaverage.com" />
