@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.hivewallet.app;
+package com.hivewallet.hive.cordova;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
