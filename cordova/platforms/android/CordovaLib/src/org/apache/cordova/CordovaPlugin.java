@@ -27,34 +27,44 @@ import org.json.JSONException;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.webkit.CookieSyncManager;
 
 /**
  * Plugins must extend this class and override one of the execute methods.
  */
 public class CordovaPlugin {
+    @Deprecated // This is never set.
     public String id;
-    public CordovaWebView webView;					// WebView object
+    public CordovaWebView webView;
     public CordovaInterface cordova;
+    protected CordovaPreferences preferences;
 
     /**
-     * @param cordova The context of the main Activity.
-     * @param webView The associated CordovaWebView.
+     * Call this after constructing to initialize the plugin.
+     * Final because we want to be able to change args without breaking plugins.
      */
-    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+    public final void privateInitialize(CordovaInterface cordova, CordovaWebView webView, CordovaPreferences preferences) {
         assert this.cordova == null;
         this.cordova = cordova;
         this.webView = webView;
-        // File Transfer API implementation leverages the android.webkit.CookieManager.
-        // But trying to getinstance() of CookieManager before the webview
-        // instantiated would cause crash. In the cordova with xwalk backend,
-        // there doesn't exist webview. From the android official document
-        // (http://developer.android.com/reference/android/webkit/CookieManager.html),
-        // it requires to call following API first.
-        // TODO: add condition only for xwalk backend when dynamic switch is ready.
-        CookieSyncManager.createInstance(cordova.getActivity());
+        this.preferences = preferences;
+        initialize(cordova, webView);
+        pluginInitialize();
     }
 
+    /**
+     * Called after plugin construction and fields have been initialized.
+     * Prefer to use pluginInitialize instead since there is no value in
+     * having parameters on the initialize() function.
+     */
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+    }
+
+    /**
+     * Called after plugin construction and fields have been initialized.
+     */
+    protected void pluginInitialize() {
+    }
+    
     /**
      * Executes the request.
      *

@@ -1,46 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-       Licensed to the Apache Software Foundation (ASF) under one
-       or more contributor license agreements.  See the NOTICE file
-       distributed with this work for additional information
-       regarding copyright ownership.  The ASF licenses this file
-       to you under the Apache License, Version 2.0 (the
-       "License"); you may not use this file except in compliance
-       with the License.  You may obtain a copy of the License at
+<project name="Hive" default="help">
 
-         http://www.apache.org/licenses/LICENSE-2.0
-
-       Unless required by applicable law or agreed to in writing,
-       software distributed under the License is distributed on an
-       "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-       KIND, either express or implied.  See the License for the
-       specific language governing permissions and limitations
-       under the License.
--->
-<project name="Cordova" default="jar">
-
-    <!-- LOAD VERSION -->
-    <loadfile property="version" srcFile="../VERSION">
-        <filterchain>
-            <striplinebreaks/>
-        </filterchain>
-    </loadfile>
-
-    <!-- check that the version of ant is at least 1.8.0 -->
-    <antversion property="thisantversion" atleast="1.8.0" />
-    <fail message="The required minimum version of ant is 1.8.0, you have ${ant.version}"
-          unless="thisantversion" />
-
-    <!-- The local.properties file is created and updated by the 'android' 
-         tool. (For example "sdkdir/tools/android update project -p ." inside
-         of this directory where the AndroidManifest.xml file exists. This
-         properties file that gets built contains the path to the SDK. It 
-         should *NOT* be checked into Version Control Systems since it holds
-         data about the local machine. -->
-    <available file="local.properties" property="exists.local.properties" />
-    <fail message="You need to create the file 'local.properties' by running 'android update project -p .' here."
-          unless="exists.local.properties" />
-    <loadproperties srcFile="local.properties" />
+    <!-- The local.properties file is created and updated by the 'android' tool.
+         It contains the path to the SDK. It should *NOT* be checked into
+         Version Control Systems. -->
+    <property file="local.properties" />
 
     <!-- The ant.properties file can be created by you. It is only edited by the
          'android' tool to add properties to it.
@@ -57,11 +21,21 @@
 
          Properties related to the SDK location or the project target should
          be updated using the 'android' tool with the 'update' action.
+
          This file is an integral part of the build system for your
          application and should be checked into Version Control Systems.
 
          -->
     <property file="ant.properties" />
+
+    <!-- if sdk.dir was not set from one of the property file, then
+         get it from the ANDROID_HOME env var.
+         This must be done before we load project.properties since
+         the proguard config can use sdk.dir -->
+    <property environment="env" />
+    <condition property="sdk.dir" value="${env.ANDROID_HOME}">
+        <isset property="env.ANDROID_HOME" />
+    </condition>
 
     <!-- The project.properties file is created and updated by the 'android'
          tool, as well as ADT.
@@ -76,32 +50,23 @@
 
     <!-- quick check on sdk.dir -->
     <fail
-            message="sdk.dir is missing. Make sure to generate local.properties using 'android update project'"
+            message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through the ANDROID_HOME environment variable."
             unless="sdk.dir"
     />
 
-    <!-- version-tag: custom -->
-<!-- extension targets. Uncomment the ones where you want to do custom work
-     in between standard targets -->
-<!--
-    <target name="-pre-build">
-    </target>
-    <target name="-pre-compile">
-    </target>
-
-    /* This is typically used for code obfuscation.
-       Compiled code location: ${out.classes.absolute.dir}
-       If this is not done in place, override ${out.dex.input.absolute.dir} */
-    <target name="-post-compile">
-    </target>
--->
-    <target name="-pre-clean">
-        <!-- delete generated javadoc -->
-        <delete dir="javadoc-public" failonerror="false" />
-        <delete dir="javadoc-private" failonerror="false" />
-        <!-- delete generated jar -->
-        <delete file="cordova-${version}.jar" failonerror="false" />
-    </target>
+    <!--
+        Import per project custom build rules if present at the root of the project.
+        This is the place to put custom intermediary targets such as:
+            -pre-build
+            -pre-compile
+            -post-compile (This is typically used for code obfuscation.
+                           Compiled code location: ${out.classes.absolute.dir}
+                           If this is not done in place, override ${out.dex.input.absolute.dir})
+            -post-package
+            -post-build
+            -pre-clean
+    -->
+    <import file="custom_rules.xml" optional="true" />
 
     <!-- Import the actual build file.
 
@@ -121,72 +86,7 @@
          In all cases you must update the value of version-tag below to read 'custom' instead of an integer,
          in order to avoid having your file be overridden by tools such as "android update project"
     -->
+    <!-- version-tag: VERSION_TAG -->
     <import file="${sdk.dir}/tools/ant/build.xml" />
-
-    <!-- Build Cordova jar file that includes all native code, and Cordova JS file
-         that includes all JavaScript code.
-    -->
-    <target name="jar" depends="-compile">
-        <jar
-            basedir="bin/classes"
-            excludes="org/apache/cordova/R.class,org/apache/cordova/R$*.class"
-            jarfile="cordova-${version}.jar" />
-    </target>
-    
-    <target name="javadoc">
-        <delete dir="javadoc-public" failonerror="false" />
-        <javadoc
-            access="public" 
-            destdir="javadoc-public"
-            classpath="${sdk.dir}/platforms/${target}/android.jar">
-            <packageset dir="src">
-                <include name="org/apache/cordova/**" />
-            </packageset>
-        </javadoc>
-        <delete dir="javadoc-private" failonerror="false" />
-        <javadoc
-            access="private" 
-            destdir="javadoc-private"
-            classpath="${sdk.dir}/platforms/${target}/android.jar">
-            <packageset dir="src">
-                <include name="org/apache/cordova/**" />
-            </packageset>
-        </javadoc>
-    </target>
-
-    <!-- tests for Java files -->
-    <property name="test.dir" location="test/org/apache/cordova" />
-
-    <path id="test.classpath">
-        <!-- requires both junit and cordova -->
-        <pathelement location="libs/junit-4.10.jar" />
-        <pathelement location="cordova-${version}.jar" />
-        <pathelement location="${test.dir}" />
-    </path>
-
-    <target name="compile-test">
-        <javac srcdir="${test.dir}" >
-            <classpath refid="test.classpath" />
-        </javac>
-    </target>
-
-    <target name="test" depends="jar, compile-test">
-        <junit showoutput="true">
-            <classpath refid="test.classpath" />
-            <formatter type="brief" usefile="false" />
-            <batchtest fork="yes">
-                <fileset dir="${test.dir}">
-                    <include name="*Test.java" />
-                    <include name="**/*Test.java" />
-                </fileset>
-            </batchtest>
-        </junit>
-    </target>
-
-    <target name="cordova_debug" depends="debug">
-    </target>
-
-    <target name="cordova_release" depends="release">
-    </target>
 
 </project>
