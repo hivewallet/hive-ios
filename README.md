@@ -106,6 +106,8 @@ cordova run android     # or: cordova emulate android
 cordova build --release android     # for release version
 ```
 
+The Google Play Store requires a new version code for each new APK that is uploaded (the version string does not matter). See the attribute `android-versionCode` in `./cordova/config_template.xml` for this value.
+
 The Android part of Cordova makes use of [Crosswalk](https://crosswalk-project.org/) to bundle a modern web runtime. It includes runtimes for both x86 and ARM (see cordova/platforms/android/CordovaLib/xwalk_core_library/libs/ ). It should be possible to build tailored APKs which only contain one of the two to save on package size.
 
 ## Contributing
