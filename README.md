@@ -93,12 +93,17 @@ Apache Cordova is also set up to create an Android app. This requires the Androi
 
 ```
 npm install -g cordova
-gulp build
+npm install
+npm install which
+source prod.config && npm run build
+source prod.config && npm run ios-build     # some errors can be ignored
 cd ./cordova
-android update project -p platforms/android/ --subprojects
+android update project --path platforms/android/CordovaLib/ --subprojects --target "android-19"
 ant -f platforms/android/CordovaLib/xwalk_core_library/build.xml debug
-cordova build android
+ant -f platforms/android/CordovaLib/build.xml debug
+cordova build android   # for debug version
 cordova run android     # or: cordova emulate android
+cordova build --release android     # for release version
 ```
 
 The Android part of Cordova makes use of [Crosswalk](https://crosswalk-project.org/) to bundle a modern web runtime. It includes runtimes for both x86 and ARM (see cordova/platforms/android/CordovaLib/xwalk_core_library/libs/ ). It should be possible to build tailored APKs which only contain one of the two to save on package size.
